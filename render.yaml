@@ -1,6 +1,7 @@
 services:
   - type: web
-    name: service
+    name: idempotency-service
     env: node
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: npm install && npm prune --production
+    startCommand: node src/index.js
+    healthCheckPath: /health
